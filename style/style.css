@@ -1,0 +1,24 @@
+body { 
+    background-color:red;
+    background-image: url('img/background.svg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: left bottom;
+  }
+
+
+
+/*#intro {
+    background-image: url('img/background.svg');
+    height: 400vh;
+}
+
+/* Height for devices larger than 576px 
+@media (min-width: 992px) {
+    #intro {
+      margin-top: -58.59px;
+    }
+  }*/
+
+
+  
