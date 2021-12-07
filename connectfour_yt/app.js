@@ -14,18 +14,23 @@ for(let i=0; i < tableCell.length; i++){
 
 //namen und farben setzten
 while(!player1){
-    var player1 = prompt('Namen Spieler:in 1. Du wirst rot sein');
+    var player1 = prompt('Namen Spieler:in 1. Du wirst Spieler 1, der Löwe, sein');
 }
-player1Color = 'red';
+player1Color = '#BA671C';
+console.log(player1)
 
 while(!player2){
-    var player2 = prompt('Namen Spieler:in 2. Du wirst gelb sein');
+    var player2 = prompt('Namen Spieler:in 2. Du wirst Spieler 2, der Elefant, sein');
 }
-player2Color = 'yellow';
+player2Color = '#8BAB23';
+console.log(player2)
 
+player1Name = document.getElementById("player1Avatar").innerHTML= `${player1}`;
+player2Name = document.getElementById("player2Avatar").innerHTML= `${player2}`;
 //Status beim Beginn des Spieles
 var currentPlayer =1;
 playerTurn.textContent = `${player1}s Zug!`;
+
 
 Array.prototype.forEach.call(tableCell, (cell) =>{
     cell.addEventListener('click', changeColor);
@@ -61,7 +66,7 @@ function changeColor(e){
                 row[0].style.backgroundColor =player2Color;
                 if (horizontalCheck()|| verticalCheck()|| diagonalCheckUp()||diagonalCheckDown()){ //wenn einer der Checks true wird winner ausgegeben (horizontal or vertical or diagonal)
                     playerTurn.textContent=`${player2} hat gewonnen!`;
-                    playerTurn.style.color=player1Color;
+                    playerTurn.style.color=player2Color;
                     return(alert(`${player2} hat gewonnen!!`));
                 }else if(drawCheck()){
                     playerTurn.textContent ='Es endet unentschieden!';
