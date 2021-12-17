@@ -5,7 +5,7 @@ var tableCell = document.getElementsByTagName('td');
 var tableSlot = document.querySelectorAll('.slot');
 const playerTurn = document.querySelector('.player-turn');
 const reset = document.querySelector('.reset');
-TODO //Kommentar einfügen
+// ***Kommentar noch einsetzen***** 
 for(let i=0; i < tableCell.length; i++){
     tableCell[i].addEventListener('click', (e) => {
         console.log(`${e.target.parentElement.rowIndex},${e.target.cellIndex}`)
@@ -25,7 +25,7 @@ while(!player2){
 player2Color = '#8BAB23';
 console.log(player2) // Player 2 gesetzt als Elefant
 
-TODO //Kommentar
+// ***Kommentar noch einsetzen***** 
 player1Name = document.getElementById("player1Avatar").innerHTML= `${player1}`;
 player2Name = document.getElementById("player2Avatar").innerHTML= `${player2}`;
 
@@ -89,7 +89,7 @@ function colorMatchCheck (one, two, three, four){
 }
 
 //horizontaler Check
-TODO //Kommentar
+// ***Kommentar noch einsetzen***** 
 function horizontalCheck(){
     for(let row = 0; row < tableRow.length; row++){
         for (let col = 0; col < 4; col++){
@@ -167,6 +167,6 @@ reset.addEventListener('click', ()=>{
         slot.style.backgroundColor = 'white';
     });
     playerTurn.style.Color='black';
-    return(currentPlayer ===1 ? playerTurn.textContent = `${player1}s Zug`: playerTurn.textContent = `${player2}s Zug`); // beginn wieder von vorne
+    return(currentPlayer ===1 ? playerTurn.textContent = `${player1}s Zug`: playerTurn.textContent = `${player2}s Zug`); // Beginn wieder von vorne
 })
 
