@@ -4,7 +4,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-   <link rel="stylesheet" href="style/style.css">
+   <link rel="stylesheet" href="style/style.css"> <!-- Link zum CSS-->
 
     <title>Safari4win</title>
     <!--<style>
@@ -81,90 +81,31 @@
     -->
 
 
-
+    <!-- START HEADER-->
     <div class="container">
-         
         <div class="row">
           <div class="col-4">
-            
           </div>
+
           <div class="col-4">
             <img src="img/logo-s4w.png" class="img-fluid" alt="Logo"/>
             <h3 class="player-turn text-center">player turn</h3>
           </div>
+
           <div class="col-4">
-           
           </div>
         </div>
-        
       </div>
+      <!-- END HEADER-->
 
-
+<!-- START CONNECT FOUR TABLE -->
       <div class="container">
         <div class="row">
           <div class="col-2"></div>
           <div class="col-7 row bg-white me-1 shadow rahmenGame container">
-            <!--<table class="table table-borderless">
-                <tbody>
-                  <tr>
-                    <td><div class="bg-white shadow rahmenNumber">11</div></td>
-                    <td><div class="bg-white shadow rahmenNumber">21</div></td>
-                    <td><div class="bg-white shadow rahmenNumber">31</div></td>
-                    <td><div class="bg-white shadow rahmenNumber">41</div></td>
-                    <td><div class="bg-white shadow rahmenNumber">51</div></td>
-                    <td><div class="bg-white shadow rahmenNumber">61</div></td>
-                    <td><div class="bg-white shadow rahmenNumber">71</div></td>
-                  </tr>
-                  <tr>
-                    <td><div class="bg-white shadow rahmenNumber">12</div></td>
-                    <td><div class="bg-white shadow rahmenNumber">22</div></td>
-                    <td><div class="bg-white shadow rahmenNumber">32</div></td>
-                    <td><div class="bg-white shadow rahmenNumber">42</div></td>
-                    <td><div class="bg-white shadow rahmenNumber">52</div></td>
-                    <td><div class="bg-white shadow rahmenNumber">62</div></td>
-                    <td><div class="bg-white shadow rahmenNumber">72</div></td>
-                  </tr>
-                  <tr>
-                    <td><div class="bg-white shadow rahmenNumber">13</div></td>
-                    <td><div class="bg-white shadow rahmenNumber">23</div></td>
-                    <td><div class="bg-white shadow rahmenNumber">33</div></td>
-                    <td><div class="bg-white shadow rahmenNumber">43</div></td>
-                    <td><div class="bg-white shadow rahmenNumber">53</div></td>
-                    <td><div class="bg-white shadow rahmenNumber">63</div></td>
-                    <td><div class="bg-white shadow rahmenNumber">73</div></td>
-                  </tr>
-                  <tr>
-                    <td><div class="bg-white shadow rahmenNumber">14</div></td>
-                    <td><div class="bg-white shadow rahmenNumber">24</div></td>
-                    <td><div class="bg-white shadow rahmenNumber">34</div></td>
-                    <td><div class="bg-white shadow rahmenNumber">44</div></td>
-                    <td><div class="bg-white shadow rahmenNumber">54</div></td>
-                    <td><div class="bg-white shadow rahmenNumber">64</div></td>
-                    <td><div class="bg-white shadow rahmenNumber">74</div></td>
-                  </tr>
-                  <tr>
-                    <td><div class="bg-white shadow rahmenNumber">15</div></td>
-                    <td><div class="bg-white shadow rahmenNumber">25</div></td>
-                    <td><div class="bg-white shadow rahmenNumber">35</div></td>
-                    <td><div class="bg-white shadow rahmenNumber">45</div></td>
-                    <td><div class="bg-white shadow rahmenNumber">55</div></td>
-                    <td><div class="bg-white shadow rahmenNumber">65</div></td>
-                    <td><div class="bg-white shadow rahmenNumber">75</div></td>
-                  </tr>
-                  <tr>
-                    <td><div class="bg-white shadow rahmenNumber">16</div></td>
-                    <td><div class="bg-white shadow rahmenNumber">26</div></td>
-                    <td><div class="bg-white shadow rahmenNumber">36</div></td>
-                    <td><div class="bg-white shadow rahmenNumber">46</div></td>
-                    <td><div class="bg-white shadow rahmenNumber">56</div></td>
-                    <td><div class="bg-white shadow rahmenNumber">66</div></td>
-                    <td><div class="bg-white shadow rahmenNumber">76</div></td>
-                  </tr>
-                </tbody>
-              </table>-->
-              <table class="row-table">
+              <table class="row-table"> <!-- Tabelle der Connect Four-->
                 <tr>
-                    <td class="slot"></td>
+                    <td class="slot"></td> <!--die class="slot" benötigt, man, damit JS darauf zugreifen kann / identifizieren kann-->
                     <td class="slot"></td>
                     <td class="slot"></td>
                     <td class="slot"></td>
@@ -219,17 +160,17 @@
                 </tr>
                 </table>
           </div>
-          <div class="col-2 ms-1">
+          <div class="col-2 ms-1"> <!-- Karten für die Spieler inkl. Name, Bild-->
            
-            <div class="row d-flex pt-4 pb-4 justify-content-center mb-1 bg-white shadow rahmenLion">
+            <div class="row d-flex pt-4 pb-4 justify-content-center mb-1 bg-white shadow rahmenLion"> <!--Karte 1. Player-->
               <img src='img/icon/lion.svg' class='d-flex mx-auto mb-2' alt='Löwe'>
 
               <p><h5 class='row justify-content-center text-center' id='player1Avatar'></h5>
               Königlich gut</p>
             </div>
 
-            <div class="row d-flex pt-4 pb-4 justify-content-center mb-1 bg-white shadow rahmenElephant">
-              <img src='img/icon/elephant.svg' class='d-flex mx-auto mb-2' alt='Elefant' id='cardPlayer2'>
+            <div class="row d-flex pt-4 pb-4 justify-content-center mb-1 bg-white shadow rahmenElephant"> <!--  Karte 2. Player-->
+              <img src='img/icon/elephant.svg' class='d-flex mx-auto mb-2' alt='Elefant' id='cardPlayer2'> 
 
               <p><h5 class='row justify-content-center text-center' id='player2Avatar'></h5>
               Gross eifern</p>
@@ -240,7 +181,9 @@
           <div class="col-1"></div>
         </div>
       </div>
+      <!-- END CONNECT FOUR TABLE -->
 
+      <!-- START BUTTONS -->
     <div class="container">
       <div class="row mt-5">
         <div class="col-2"></div>
@@ -263,8 +206,9 @@
 
       </div>
     </div>
+    <!-- END BUTTONS -->
 
-<!-- Start modal Avatar-->
+<!-- START MODAL AVATAR -->
 <div class="modal fade" id="modal-avatar">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
@@ -346,7 +290,6 @@
 function myFunction() {
   var x = document.getElementById("cardPlayer2").src="img/icon/hippo.svg";
   console.log(x)
-  /*x.style.border = "10px dotted black";*/
 }
 </script>
 </div>
@@ -356,7 +299,7 @@ function myFunction() {
     </div>
   </div>
 </div>
-<!--End Modal Avatar-->
+<!-- END MODAL AVATAR -->
 
 
 <!-- Start modal rules-->
@@ -375,7 +318,9 @@ function myFunction() {
   </div>
 </div>
 <!--End Modal rules-->
-<script src="connectfour_yt/app.js"></script>
+
+
+<script src="script/script.js"></script> <!--Link zum JavaScript Code-->
   </body>
 </html>
 
