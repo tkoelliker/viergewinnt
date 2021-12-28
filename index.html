@@ -72,13 +72,13 @@
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>-->
 
     <!-- Option 2: Separate Popper and Bootstrap JS --></div>
-    <!--
+    
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
-    -->
+    
 
 
     <!-- START HEADER-->
@@ -162,19 +162,43 @@
           </div>
           <div class="col-2 ms-1"> <!-- Karten für die Spieler inkl. Name, Bild-->
            
-            <div class="row d-flex pt-4 pb-4 justify-content-center mb-1 bg-white shadow rahmenLion"> <!--Karte 1. Player-->
+            <!--<div class="row d-flex pt-4 pb-4 justify-content-center mb-1 bg-white shadow rahmenLion"> <!--Karte 1. Player
               <img src='img/icon/lion.svg' class='d-flex mx-auto mb-2' alt='Löwe'>
 
               <p><h5 class='row justify-content-center text-center' id='player1Avatar'></h5>
               Königlich gut</p>
+            </div>-->
+
+
+            <div class="row d-flex pt-4 pb-4 justify-content-center mb-1 bg-white shadow rahmenLion" id='card'> <!--Karte 1. Player-->
+              <img src='img/icon/lion.svg' class='d-flex mx-auto mb-2' alt='ava' id='cardImg'>
+    
+              <h5 class='row justify-content-center text-center' id='player1Avatar'></h5>
+              <p id='txtvalueP1' class='text-center'>Könglich gut</p>
+              <select id="ddselect" class="btn btn-secondary w-75 text-center ddl-none arrow down" onchange="ddlselect(this);">
+                <option value="Königlich gut">Löwe</option>
+                <option value="Gross eifern">Elefant</option>
+                <option value="Flink unterwegs">Affe</option>
+                <option value="Gefährlich süss">Nilpferd</option>
+                <option value="Lange picken">Giraffe</option>
+        
+              </select>
             </div>
 
-            <div class="row d-flex pt-4 pb-4 justify-content-center mb-1 bg-white shadow rahmenElephant"> <!--  Karte 2. Player-->
-              <img src='img/icon/elephant.svg' class='d-flex mx-auto mb-2' alt='Elefant' id='cardPlayer2'> 
+            <div class="row d-flex pt-4 pb-4 justify-content-center mb-1 bg-white shadow rahmenElephant" id='cardP2'> <!--  Karte 2. Player-->
+              <img src='img/icon/elephant.svg' class='d-flex mx-auto mb-2' alt='Elefant' id='cardImgP2'> 
 
-              <p><h5 class='row justify-content-center text-center' id='player2Avatar'></h5>
-              Gross eifern</p>
-              <button type="button" class="btn btn-secondary w-100" data-bs-toggle='modal' data-bs-target='#modal-avatar'>Avatar wählen P2</button>
+              <h5 class='row justify-content-center text-center' id='player2Avatar'></h5>
+              <p id='txtvalueP2' class='text-center'>Gross eifern</p>
+              
+              <select id="ddselectP2" class="btn btn-player2 w-75 text-center ddl-none" onchange="ddlselect(this);">
+                <option value="Königlich gut">Löwe</option>
+                <option selected value="Gross eifern">Elefant</option>
+                <option value="Flink unterwegs">Affe</option>
+                <option value="Gefährlich süss">Nilpferd</option>
+                <option value="Lange picken">Giraffe</option>
+        
+              </select>
             </div>
 
           </div>
@@ -188,118 +212,21 @@
       <div class="row mt-5">
         <div class="col-2"></div>
         <div class="col-2">
-          <button type="button" class="btn btn-primary w-100" data-bs-toggle='modal' data-bs-target="#modal-rules">zu den Spielregeln</button>
+          <button type="button" class="btn btn-secondary w-100" data-bs-toggle='modal' data-bs-target="#modal-rules">zu den Spielregeln</button>
         </div>
         <div class="col-1"></div>
         <div class="col-2">
-          <!-- Button trigger modal Avatar 1-->
-          <button type="button" class="btn btn-secondary w-100" data-bs-toggle='modal' data-bs-target='#modal-avatar'>Avatar wählen P1</button>
         </div>
         <div class="col-2">
-          <!-- Button trigger modal Avatar 2-->
-          <button type="button" class="btn btn-secondary w-100" data-bs-toggle='modal' data-bs-target='#modal-avatar' >Avatar wählen P2</button>
-        </div>
-        <!-- Button reset game-->
-        <div class='col-2'>
+           <!-- Button reset game-->
           <button type="button" class="btn btn-primary w-100 reset" >Spiel zurücksetzen</button>
         </div>
-
+       
+        <div class='col-2'>
+        </div>
       </div>
     </div>
     <!-- END BUTTONS -->
-
-<!-- START MODAL AVATAR -->
-<div class="modal fade" id="modal-avatar">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5>Spielfigur auswählen</h5>
-        <button type='button' class='btn-close' data-bs-dismiss='modal'></button>
-      </div>
-      <div class="modal-body">
-        <div class="container">
-         <div class="row">
-        <!--Start Lion Card-->
-        <div class='col-4'>
-          <div class="row d-flex pt-4 pb-4 justify-content-center mb-1 me-1 bg-white shadow rahmenLion">
-            <img src='img/icon/lion.svg' class='d-flex mx-auto mb-2' alt='Löwe'>
-  
-            <p><h5 class='row justify-content-center text-center'>Löwe</h5>
-            Königlich gut</p>
-          </div>
-        </div>
-          <!--End Lion Card-->
-
-        <!--Start Monkey Card-->
-        <div class='col-4'>
-        <div class="row d-flex pt-4 pb-4 justify-content-center mb-1 me-1 bg-white shadow rahmenMonkey">
-          <img src='img/icon/monkey.svg' class='d-flex mx-auto mb-2' alt='Affe'>
-
-          <p><h5 class='row justify-content-center text-center'>Affe</h5>
-          Flink unterwegs</p>
-        </div>
-      </div>
-        <!--End Monkey Card-->
-
-      <!--Start giraf Card-->
-      <div class='col-4'>
-        <div class="row d-flex pt-4 pb-4 justify-content-center mb-1 me-1 bg-white shadow rahmenGiraf">
-          <img src='img/icon/giraf.svg' class='d-flex mx-auto mb-2' alt='Giraffe'>
-
-          <p><h5 class='row justify-content-center text-center'>Giraffe</h5>
-          Lange picken</p>
-        </div>
-      </div>
-        <!--End giraf Card-->
-
-
-      </div>
-      <div class="row">
-        <div class="col-2"></div>
-        <!--Start Hippo-Card-->
-        <div class='col-4'>
-          <div class="row d-flex pt-4 pb-4 justify-content-center mb-1 me-1 bg-white shadow rahmenHippo">
-            <img src='img/icon/hippo.svg' class='d-flex mx-auto mb-2' alt='Nilpferd'>
-  
-            <p><h5 class='row justify-content-center text-center'>Nilpferd</h5>
-            Gefährlich süss</p>
-          </div>
-        </div>
-          <!--End Hippo Card-->
-          <!--Start Elefant-Card-->
-        <div class='col-4'>
-          <div class="row d-flex pt-4 pb-4 justify-content-center mb-1 me-1 bg-white shadow rahmenElephant">
-            <img src='img/icon/elephant.svg' class='d-flex mx-auto mb-2' alt='Elefant'>
-  
-            <p><h5 class='row justify-content-center text-center'>Elefant</h5>
-            Gross eifern</p>
-          </div>
-        </div>
-          <!--End Elefant Card-->
-          <div class="col-2"></div>
-      </div>
-      
-      <!--test-->
-      <div>
-
-<p>Click the button to add a black dotted border of the first image in the document.</p>
-
-<button onclick="myFunction()">Try it</button>
-
-<script>
-function myFunction() {
-  var x = document.getElementById("cardPlayer2").src="img/icon/hippo.svg";
-  console.log(x)
-}
-</script>
-</div>
-
-      </div>
-    </div>
-    </div>
-  </div>
-</div>
-<!-- END MODAL AVATAR -->
 
 
 <!-- Start modal rules-->
@@ -311,7 +238,7 @@ function myFunction() {
         <button type='button' class='btn-close' data-bs-dismiss='modal'></button>
       </div>
       <div class="modal-body">
-        <p>Schaffe es vor deinem Gegner vier Tiere deiner Farbe in eine waagerechte, senkrechte oder diagonale Reihe zu bringen! Dabei werden abwechselnd von oben durch einen Klick neue Tiere erscheinen, wobei es nicht nur gilt auf den eigenen Erfolg zu achten, sondern auch darauf das es eurem Gegenspieler nicht gelingt die Reihe zu vollenden. Bei einem Klick in eine Spalte wird das Tier im ersten möglichen freien Feld erscheinen. <br> Zu Beginn des Spieles kannst du dich noch entscheiden, welches Tier du auf der Safari entdecken möchtest. <br>Mach dich bereit und entdecke die Tierwelt der Savanne!</p>
+        <p>Schaffe es vor deinem Gegner vier Tiere in eine waagerechte, senkrechte oder diagonale Reihe zu bringen! Dabei werden abwechselnd von oben durch einen Klick neue Tiere erscheinen, wobei es nicht nur gilt auf den eigenen Erfolg zu achten, sondern auch darauf das es eurem Gegenspieler nicht gelingt die Reihe zu vollenden. Bei einem Klick in eine Spalte wird das Tier im ersten möglichen freien Feld erscheinen. <br> Zu Beginn des Spieles kannst du dich noch entscheiden, welches Tier du auf der Safari entdecken möchtest. <br>Mach dich bereit und entdecke die Tierwelt der Savanne!</p>
       </div>
     </div>
     </div>
@@ -321,6 +248,7 @@ function myFunction() {
 
 
 <script src="script/script.js"></script> <!--Link zum JavaScript Code-->
+
   </body>
 </html>
 

@@ -1,4 +1,3 @@
-
 // START JS-CODE FOR CONNECTFOUR
 
 // selectors
@@ -17,13 +16,13 @@ for(let i=0; i < tableCell.length; i++){
 
 //Namen durch Prompt anfragen setzten, Figur wird durch Reihenfolge gesetzt
 while(!player1){
-    var player1 = prompt('Namen Spieler:in 1. Du wirst Spieler 1, der Löwe, sein');
+    var player1 = prompt('Namen Spieler:in 1. Du wirst die braune Farbe haben.');
 } 
 player1Color = '#BA671C';
 console.log(player1) // Player 1 gesetzt als Löwe
 
 while(!player2){
-    var player2 = prompt('Namen Spieler:in 2. Du wirst Spieler 2, der Elefant, sein');
+    var player2 = prompt('Namen Spieler:in 2. Du wirst die grüne Farbe haben');
 } 
 player2Color = '#8BAB23';
 console.log(player2) // Player 2 gesetzt als Elefant
@@ -174,3 +173,58 @@ reset.addEventListener('click', ()=>{
 })
 
 // END JS-CODE FOR CONNECTFOUR
+
+
+
+// START CHANGE AVATAR
+
+//Variablen definieren
+var cardText = "Löwe"; //global var, Text auswählen, welcher Inhalt die Select Box hat von Player 1
+var cardTextP2 = 'Elefant'; //global var, Text auswählen, welcher Inhalt die Select Box hat von Player 2
+var valueSloganP1 = 'Königlich gut'; //global var, Text auswählen, welcher Inhalt der Slogan hat von Player 1
+var valueSloganP2 = 'Gross eifern'; //global var, Text auswählen, welcher Inhalt der Slogan hat von Player 2
+
+function ddlselect(selectObject) {
+    // START PLAYER 1
+    var d = document.getElementById('ddselect'); // Add Element mit der ID 'ddselect'  //Quelle: https://www.youtube.com/watch?v=WNLC2b5AVIE
+    cardText = d.options[d.selectedIndex].text; //Text auswählen, welcher Inhalt die Select Box hat Player 1
+
+    const $select = document.querySelector('#ddselect'); //schaut, welche Option gerade ausgewählt ist (Player 1) in der DropDown List //Quelle: https://alvarotrigo.com/blog/javascript-select-option/
+
+    if (cardText == cardTextP2) { //schaut, ob das Tier bereits bei Player 2 auftritt. Wenn ja, dann wechselt er das Tier auf das Standardtier Löwe
+        cardText = 'Löwe';
+        valueSloganP2 = 'Königlich gut';
+        $select.value = 'Königlich gut'
+        alert('Du hast das gleiche Tier ausgewählt wie der/die andere Spieler:in. Bitte wähle ein anderes Tier aus');      
+    } else { //wenn nicht, geschieht nichts, Tier kann gewählt werden
+
+    }
+
+    valueSloganP1 = document.getElementById("ddselect").value; //value des Dropdown definieren (value='xxx') Player 1
+    txtvalueP1.innerHTML = valueSloganP1; //Text des Dropdown definieren Player 1
+    document.getElementById("cardImg").src="img/icon/"+cardText+".svg"; //Bild des Tier anpassen Player 1
+    // END PLAYER 1
+
+    // START PLAYER 2
+    var d2 = document.getElementById('ddselectP2'); // global var, Element mit der ID 'ddselectP2' hinzufügen, Player 2
+    cardTextP2 = d2.options[d2.selectedIndex].text; //Text auswählen, welcher Inhalt die Select Box hat Player 2
+
+    const $selectP2 = document.querySelector('#ddselectP2'); //schaut, welche Option gerade ausgewählt ist (Player 2) in der DropDown List //Quelle: https://alvarotrigo.com/blog/javascript-select-option/
+   
+    if (cardTextP2 == cardText) { //schaut, ob das Tier bereits bei Player 1 auftritt. Wenn ja, dann wechselt er das Tier auf das Standardtier Elefant
+
+        cardTextP2 = 'Elefant';
+        valueSloganP2 = 'Gross eifern';
+        $selectP2.value = 'Gross eifern'
+        alert('Du hast das gleiche Tier ausgewählt wie der/die andere Spieler:in. Bitte wähle ein anderes Tier aus');        
+    } else { //wenn nicht, geschieht nichts, Tier kann gewählt werden
+
+    }
+
+    valueSloganP2 = document.getElementById("ddselectP2").value; //value des Dropdown definieren (value='xxx')
+    txtvalueP2.innerHTML = valueSloganP2; //Text des Dropdown definieren
+    document.getElementById("cardImgP2").src="img/icon/"+cardTextP2+".svg"; //icon wechseln nach gewähltem Tier
+    // END PLAYER 2
+}
+
+// END CHANGE AVATAR

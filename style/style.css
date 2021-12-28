@@ -29,9 +29,13 @@ body {
     background-color: #dcdcdc;
 }
 
+.row-table {
+  border-collapse: separate;
+}
+
 .container table tr td{
-    width: 90px;
-    height: 80px;
+    width: 100px;
+    height: 100px;
     border: 2px solid black;
     border-radius: 50%;
     background-color: white;
@@ -95,16 +99,48 @@ width: 50px;
 border: 2px solid #000;
 }
 
-.row-table {
+/*.row-table {
   width: 80%;
-}
+}*/
 /*ToDo: Hover effekt */
-.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+.btn-primary,  .btn-primary:active, .btn-primary:visited {
 background-color: #BA671C !important;
 border-color: #BA671C !important;
 }
-.btn-secondary, .btn-secondary:hover, .btn-secondary:active, .btn-secondary:visited {
-color:#000 !important;
-background-color: #fff !important;
-border-color: #BA671C !important;
+
+.btn-primary:hover {
+  background-color: #BA671C99 !important;
 }
+
+.btn-secondary,  .btn-secondary:active, .btn-secondary:visited {
+  color:#000 !important;
+  background-color: #fff !important;
+  border: 2px solid #BA671C !important;
+}
+
+.btn-secondary:hover {
+  background-color: #BA671C33 !important;
+}
+
+
+.btn-player2, .btn-player2:active, .btn-player2:visited {
+  color:#000 !important;
+  background-color: #fff !important;
+  border: 2px solid #8BAB23 !important;
+}
+
+.btn-player2:hover {
+  background-color: #8BAB2333 !important;
+}
+
+
+
+.ddl-none { /*drop down list entfernt den style, fügt den Pfeil hinzu*/
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none; 
+  background-image: url(../img/icon/arrow-down.svg);
+  background-repeat: no-repeat;
+  background-position: 90%;
+}
+
