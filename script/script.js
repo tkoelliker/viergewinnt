@@ -6,7 +6,7 @@ var tableRow = document.getElementsByTagName('tr');
 var tableCell = document.getElementsByTagName('td');
 var tableSlot = document.querySelectorAll('.slot');
 const playerTurn = document.querySelector('.player-turn');
-const reset = document.querySelector('.reset');
+const resetBtn = document.querySelector('.reset');
 // ***Kommentar noch einsetzen***** 
 for(let i=0; i < tableCell.length; i++){
     tableCell[i].addEventListener('click', (e) => {
@@ -56,7 +56,7 @@ function changeColor(e){
                 row[0].style.backgroundColor = player1Color; //wenn es Spieler:in 1 ist wird der erste Index des Array in die Spielerfarbe gewechselt und danach zu Spieler 2 gewechslet
                 if (horizontalCheck()|| verticalCheck()|| diagonalCheckUp()||diagonalCheckDown()){ //wenn einer der Checks (horizontal or vertical or diagonal) erfüllt ist und true zurück kommt wird winner ausgegeben 
                     playerTurn.textContent=`${player1} hat gewonnen!`;
-                    playerTurn.style.color=player1Color; // die Farbe von Spieler 1 wird übernommen, da gewonnen
+                    //playerTurn.style.color=player1Color; // die Farbe von Spieler 1 wird übernommen, da gewonnen
                     return(alert(`${player1} hat gewonnen!!`));
                 }else if(drawCheck()){ //wenn kein Feld mehr weiss ist, aber weder horizontal, vertical oder diagonal Checks true ist muss es ein Unentschieden sein. Ausgabe dass es Unentschieden ist
                     playerTurn.textContent ='Es endet unentschieden!';
@@ -71,7 +71,7 @@ function changeColor(e){
                 row[0].style.backgroundColor =player2Color;
                 if (horizontalCheck()|| verticalCheck()|| diagonalCheckUp()||diagonalCheckDown()){ //wenn einer der Checks true wird winner ausgegeben (horizontal or vertical or diagonal)
                     playerTurn.textContent=`${player2} hat gewonnen!`;
-                    playerTurn.style.color=player2Color;
+                    //playerTurn.style.color=player2Color;
                     return(alert(`${player2} hat gewonnen!!`));
                 }else if(drawCheck()){
                     playerTurn.textContent ='Es endet unentschieden!';
@@ -164,12 +164,12 @@ function drawCheck(){
 }
 
 //Resetknopf
-reset.addEventListener('click', ()=>{
+resetBtn.addEventListener('click', () => {
     tableSlot.forEach(slot=> {
         slot.style.backgroundColor = 'white';
     });
     playerTurn.style.Color='black';
-    return(currentPlayer ===1 ? playerTurn.textContent = `${player1}s Zug`: playerTurn.textContent = `${player2}s Zug`); // Beginn wieder von vorne
+    return(currentPlayer ===1 ? playerTurn.textContent = `${player1}s Zug!`: playerTurn.textContent = `${player2}s Zug!`); // Beginn wieder von vorne
 })
 
 // END JS-CODE FOR CONNECTFOUR
@@ -228,3 +228,47 @@ function ddlselect(selectObject) {
 }
 
 // END CHANGE AVATAR
+
+//START Zeitanzeige
+const anzeige = document.getElementById("zeitanzeige");
+
+var gestoppteZeit = 0;
+var pausiert = true;
+var letzterDurchlauf = new Date(); // Zeitpunkt jetzt in Milisekunden
+
+function start() {
+    pausiert = false;
+}
+function pause() {
+    pausiert = true;
+}
+function reset_timer() {
+    pausiert = true;
+    gestoppteZeit = 0;
+    aktualisiereAnzeige();
+}
+
+function aktualisiereZeit() {
+    if(pausiert === false) {
+        gestoppteZeit += new Date() - letzterDurchlauf;
+        aktualisiereAnzeige();
+    }
+    letzterDurchlauf = new Date();
+    setTimeout(aktualisiereZeit, 1);
+}
+
+function aktualisiereAnzeige(){
+    let millisekunden = gestoppteZeit % 1000;
+    let sekunden = Math.floor(gestoppteZeit / 1000) % 60;
+    let minuten = Math.floor(gestoppteZeit / 60000) % 60;
+    let stunden = Math.floor(gestoppteZeit / 3600000);
+
+    stunden = stunden < 10 ? "0" + stunden : stunden;
+    minuten = minuten < 10 ? "0" + minuten : minuten;
+    sekunden = sekunden < 10 ? "0" + sekunden : sekunden;
+    millisekunden = "000" + millisekunden;
+    millisekunden = millisekunden.slice(millisekunden.length - 3);
+
+    anzeige.innerHTML = stunden + ":" + minuten + ":" + sekunden + "." + millisekunden;
+}
+aktualisiereZeit(); 

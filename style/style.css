@@ -144,3 +144,14 @@ border-color: #BA671C !important;
   background-position: 90%;
 }
 
+/* Design zeitanzeige*/
+#zeitanzeige {
+  font-size: 30px;
+  margin-bottom: 25px;
+  font-family: monospace;
+}
+button {
+  font-size: 2em;
+  width: 60px;
+  margin: 0 15px;
+}
