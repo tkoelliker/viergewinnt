@@ -180,7 +180,7 @@
                 <option value="Gross eifern">Elefant</option>
                 <option value="Flink unterwegs">Affe</option>
                 <option value="Gefährlich süss">Nilpferd</option>
-                <option value="Lange picken">Giraffe</option>
+                <option value="Lange denken">Giraffe</option>
         
               </select>
             </div>
@@ -196,7 +196,7 @@
                 <option selected value="Gross eifern">Elefant</option>
                 <option value="Flink unterwegs">Affe</option>
                 <option value="Gefährlich süss">Nilpferd</option>
-                <option value="Lange picken">Giraffe</option>
+                <option value="Lange denken">Giraffe</option>
         
               </select>
             </div>
@@ -214,17 +214,29 @@
         <div class="col-2">
           <button type="button" class="btn btn-secondary w-100" data-bs-toggle='modal' data-bs-target="#modal-rules">zu den Spielregeln</button>
         </div>
-        <div class="col-1"></div>
-        <div class="col-2">
+
+        <div class="col-3">
+          <!--Start Timer-->
+          <div id="zeitanzeige">00:00:00.000</div>
+          <div id="button-behaelter" style="text-align:center;">
+            <button class="btn btn-secondary" onclick="start()">Start</button>
+            <button class="btn btn-secondary" onclick="pause()">Pause</button>
+            <button class="btn btn-secondary" onclick="reset_timer()">zurücksetzen</button>
+          </div>
+          <!--End Timer-->
         </div>
+
+
         <div class="col-2">
            <!-- Button reset game-->
           <button type="button" class="btn btn-primary w-100 reset" >Spiel zurücksetzen</button>
+        </div>         
+        <div class='col-4'>
         </div>
-       
-        <div class='col-2'>
-        </div>
+        <div class='col-4'>
+        
       </div>
+
     </div>
     <!-- END BUTTONS -->
 
@@ -246,14 +258,7 @@
 </div>
 <!--End Modal rules-->
 
-<!--Start Timer-->
-<div id="zeitanzeige">00:00:00.000</div>
-<div id="button-behaelter">
-  <button onclick="start()">Start</button>
-  <button onclick="pause()">Pause</button>
-  <button onclick="reset_timer()">Reset</button>
-</div>
-<!--End Timer-->
+
 
 
 <script src="script/script.js"></script> <!--Link zum JavaScript Code-->

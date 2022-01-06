@@ -149,9 +149,10 @@ border-color: #BA671C !important;
   font-size: 30px;
   margin-bottom: 25px;
   font-family: monospace;
+  text-align:center;
 }
-button {
+/*button {
   font-size: 2em;
   width: 60px;
   margin: 0 15px;
-}
+}*/
