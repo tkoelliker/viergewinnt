@@ -1,17 +1,5 @@
 
 /*connectfour*/
-  
-  /**{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Luckiest Guy';
-    text-align: center;
-    margin-top: 0.5rem;
-   
-}*/
-
-
 a{
     position: absolute;
     top:6rem;
@@ -20,7 +8,6 @@ a{
     transform: translate(-50%);
     color: black;
 }
-
 a:hover{
     opacity: 0.7;
 }
@@ -57,6 +44,10 @@ body {
     
 }
 
+body { 
+  padding-bottom: 4em;
+}
+
 .footer {
   position: fixed;
   left: 0;
@@ -64,30 +55,13 @@ body {
   width: 100%;
   color: white;
   text-align: center;
+  height:4em;
 }
 
 
 /* Bootstrap ergänzungen*/
-body { 
-  background-image: url('img/background.svg');
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: left bottom; 
-}
 .rahmenLion {
   border: 4px solid #BA671C;
-  border-radius: 30px;
-}
-.rahmenMonkey {
-  border: 4px solid #E39236;
-  border-radius: 30px;
-}
-.rahmenGiraf {
-  border: 4px solid #F4D2AC;
-  border-radius: 30px;
-}
-.rahmenHippo {
-  border: 4px solid #6F5B0F;
   border-radius: 30px;
 }
 
@@ -163,44 +137,9 @@ border-color: #BA671C !important;
   font-family: monospace;
   text-align:center;
 }
-/*button {
-  font-size: 2em;
-  width: 60px;
-  margin: 0 15px;
-}*/
 
 
 /* Confetti*/
-
-.popup {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: #fff;
-    width: 450px;
-    height: 300px;
-    box-shadow: 0 25px 50px rgba(0,0,0,0.1),
-    0 0 0 1000px rgba(255,255,255,0.95) ;
-    display: flex;
-    justify-items: center;
-    align-items: center;
-    padding: 40px;
-    visibility: hidden;
-}
-.popup.active {
-    visibility: visible;
-}
-.close {
-    position: absolute;
-    top: 0;
-    right: 0;
-    padding: 10px 20px;
-    background: #f00;
-    color: #fff;
-    cursor: pointer;
-
-}
 
 #my-canvas {
     position: fixed;

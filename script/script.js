@@ -1,3 +1,63 @@
+// START CHANGE AVATAR
+
+//Variablen definieren
+var cardText = "Löwe"; //global var, Text auswählen, welcher Inhalt die Select Box hat von Player 1
+var cardTextP2 = 'Elefant'; //global var, Text auswählen, welcher Inhalt die Select Box hat von Player 2
+var valueSloganP1 = 'Königlich gut'; //global var, Text auswählen, welcher Inhalt der Slogan hat von Player 1
+var valueSloganP2 = 'Gross eifern'; //global var, Text auswählen, welcher Inhalt der Slogan hat von Player 2
+
+let player1img = document.getElementById("cardImg").getAttribute("src"); // Hintergrundbild für spiel definieren
+let player2img = document.getElementById("cardImgP2").getAttribute("src"); // Hintergrundbild für spiel definieren
+
+
+function ddlselect(selectObject) {
+    // START PLAYER 1
+    var d = document.getElementById('ddselect'); // Add Element mit der ID 'ddselect'  //Quelle: https://www.youtube.com/watch?v=WNLC2b5AVIE
+    cardText = d.options[d.selectedIndex].text; //Text auswählen, welcher Inhalt die Select Box hat Player 1
+
+    const $select = document.querySelector('#ddselect'); //schaut, welche Option gerade ausgewählt ist (Player 1) in der DropDown List //Quelle: https://alvarotrigo.com/blog/javascript-select-option/
+
+    if (cardText == cardTextP2) { //schaut, ob das Tier bereits bei Player 2 auftritt. Wenn ja, dann wechselt er das Tier auf das Standardtier Löwe
+        cardText = 'Löwe';
+        valueSloganP2 = 'Königlich gut';
+        $select.value = 'Königlich gut'
+        alert('Du hast das gleiche Tier ausgewählt wie der/die andere Spieler:in. Bitte wähle ein anderes Tier aus');      
+    } else { //wenn nicht, geschieht nichts, Tier kann gewählt werden
+
+    }
+
+    valueSloganP1 = document.getElementById("ddselect").value; //value des Dropdown definieren (value='xxx') Player 1
+    txtvalueP1.innerHTML = valueSloganP1; //Text des Dropdown definieren Player 1
+    document.getElementById("cardImg").src="img/icon/"+cardText+".svg"; //Bild des Tier anpassen Player 1
+    // END PLAYER 1
+
+    // START PLAYER 2
+    var d2 = document.getElementById('ddselectP2'); // global var, Element mit der ID 'ddselectP2' hinzufügen, Player 2
+    cardTextP2 = d2.options[d2.selectedIndex].text; //Text auswählen, welcher Inhalt die Select Box hat Player 2
+
+    const $selectP2 = document.querySelector('#ddselectP2'); //schaut, welche Option gerade ausgewählt ist (Player 2) in der DropDown List //Quelle: https://alvarotrigo.com/blog/javascript-select-option/
+   
+    if (cardTextP2 == cardText) { //schaut, ob das Tier bereits bei Player 1 auftritt. Wenn ja, dann wechselt er das Tier auf das Standardtier Elefant
+
+        cardTextP2 = 'Elefant';
+        valueSloganP2 = 'Gross eifern';
+        $selectP2.value = 'Gross eifern'
+        alert('Du hast das gleiche Tier ausgewählt wie der/die andere Spieler:in. Bitte wähle ein anderes Tier aus');        
+    } else { //wenn nicht, geschieht nichts, Tier kann gewählt werden
+
+    }
+
+    valueSloganP2 = document.getElementById("ddselectP2").value; //value des Dropdown definieren (value='xxx')
+    txtvalueP2.innerHTML = valueSloganP2; //Text des Dropdown definieren
+    document.getElementById("cardImgP2").src="img/icon/"+cardTextP2+".svg"; //icon wechseln nach gewähltem Tier
+    // END PLAYER 2
+    player1img = document.getElementById("cardImg").getAttribute("src"); // Hintergrundbild für Spiel neu definieren
+    player2img = document.getElementById("cardImgP2").getAttribute("src");
+}
+
+// END CHANGE AVATAR
+
+
 // START JS-CODE FOR CONNECTFOUR
 
 // selectors
@@ -20,7 +80,14 @@ while(!player1){
     var player1 = prompt('Namen Spieler:in 1. Du wirst die braune Farbe haben.');
 } 
 player1Color = '#BA671C';
+//console.log(player1img.getAttribute("src"));
 console.log(player1) // Player 1 gesetzt als Löwe
+console.log('player1img: ' + player1img);
+
+
+
+
+
 
 while(!player2){
     var player2 = prompt('Namen Spieler:in 2. Du wirst die grüne Farbe haben');
@@ -63,11 +130,13 @@ function changeColor(e){
             //Schleife für Spieler 1
             if(currentPlayer === 1) {
                 row[0].style.backgroundColor = player1Color; //wenn es Spieler:in 1 ist wird der erste Index des Array in die Spielerfarbe gewechselt und danach zu Spieler 2 gewechslet
+                row[0].style.backgroundImage = `url('${player1img}')`; //fügt Hintergrundbild ein
+                row[0].style.backgroundRepeat = "no-repeat";
+                row[0].style.backgroundPosition = "center";
                 if (horizontalCheck()|| verticalCheck()|| diagonalCheckUp()||diagonalCheckDown()){ //wenn einer der Checks (horizontal or vertical or diagonal) erfüllt ist und true zurück kommt wird winner ausgegeben 
                     
                     playerTurn.textContent=`${player1} hat gewonnen!`;
                     confe.classList.add('active'); //einfügen Confetti-Look
-                    //playerTurn.style.color=player1Color; // die Farbe von Spieler 1 wird übernommen, da gewonnen
                     return(alert(`${player1} hat gewonnen!!`));
 
                 }else if(drawCheck()){ //wenn kein Feld mehr weiss ist, aber weder horizontal, vertical oder diagonal Checks true ist muss es ein Unentschieden sein. Ausgabe dass es Unentschieden ist
@@ -81,10 +150,12 @@ function changeColor(e){
             }
             else{ //wenn es nicht Spieler:in 1 ist wechselt es zu der Farbe von Spieler:in 2
                 row[0].style.backgroundColor =player2Color;
+                row[0].style.backgroundImage = `url('${player2img}')`; //fügt Hintergrundbild ein
+                row[0].style.backgroundRepeat = "no-repeat";
+                row[0].style.backgroundPosition = "center";
                 if (horizontalCheck()|| verticalCheck()|| diagonalCheckUp()||diagonalCheckDown()){ //wenn einer der Checks true wird winner ausgegeben (horizontal or vertical or diagonal)
                     playerTurn.textContent=`${player2} hat gewonnen!`;
                     confe.classList.add('active'); //einfügen Confetti-Look
-                    //playerTurn.style.color=player2Color;
                     return(alert(`${player2} hat gewonnen!!`));
                 }else if(drawCheck()){
                     playerTurn.textContent ='Es endet unentschieden!';
@@ -180,6 +251,7 @@ function drawCheck(){
 resetBtn.addEventListener('click', () => {
     tableSlot.forEach(slot=> {
         slot.style.backgroundColor = 'white';
+        slot.style.backgroundImage = '';
     });
     playerTurn.style.Color='black';
     confe.classList.remove('active'); // Reset Confetti-Look
@@ -190,58 +262,7 @@ resetBtn.addEventListener('click', () => {
 
 
 
-// START CHANGE AVATAR
 
-//Variablen definieren
-var cardText = "Löwe"; //global var, Text auswählen, welcher Inhalt die Select Box hat von Player 1
-var cardTextP2 = 'Elefant'; //global var, Text auswählen, welcher Inhalt die Select Box hat von Player 2
-var valueSloganP1 = 'Königlich gut'; //global var, Text auswählen, welcher Inhalt der Slogan hat von Player 1
-var valueSloganP2 = 'Gross eifern'; //global var, Text auswählen, welcher Inhalt der Slogan hat von Player 2
-
-function ddlselect(selectObject) {
-    // START PLAYER 1
-    var d = document.getElementById('ddselect'); // Add Element mit der ID 'ddselect'  //Quelle: https://www.youtube.com/watch?v=WNLC2b5AVIE
-    cardText = d.options[d.selectedIndex].text; //Text auswählen, welcher Inhalt die Select Box hat Player 1
-
-    const $select = document.querySelector('#ddselect'); //schaut, welche Option gerade ausgewählt ist (Player 1) in der DropDown List //Quelle: https://alvarotrigo.com/blog/javascript-select-option/
-
-    if (cardText == cardTextP2) { //schaut, ob das Tier bereits bei Player 2 auftritt. Wenn ja, dann wechselt er das Tier auf das Standardtier Löwe
-        cardText = 'Löwe';
-        valueSloganP2 = 'Königlich gut';
-        $select.value = 'Königlich gut'
-        alert('Du hast das gleiche Tier ausgewählt wie der/die andere Spieler:in. Bitte wähle ein anderes Tier aus');      
-    } else { //wenn nicht, geschieht nichts, Tier kann gewählt werden
-
-    }
-
-    valueSloganP1 = document.getElementById("ddselect").value; //value des Dropdown definieren (value='xxx') Player 1
-    txtvalueP1.innerHTML = valueSloganP1; //Text des Dropdown definieren Player 1
-    document.getElementById("cardImg").src="img/icon/"+cardText+".svg"; //Bild des Tier anpassen Player 1
-    // END PLAYER 1
-
-    // START PLAYER 2
-    var d2 = document.getElementById('ddselectP2'); // global var, Element mit der ID 'ddselectP2' hinzufügen, Player 2
-    cardTextP2 = d2.options[d2.selectedIndex].text; //Text auswählen, welcher Inhalt die Select Box hat Player 2
-
-    const $selectP2 = document.querySelector('#ddselectP2'); //schaut, welche Option gerade ausgewählt ist (Player 2) in der DropDown List //Quelle: https://alvarotrigo.com/blog/javascript-select-option/
-   
-    if (cardTextP2 == cardText) { //schaut, ob das Tier bereits bei Player 1 auftritt. Wenn ja, dann wechselt er das Tier auf das Standardtier Elefant
-
-        cardTextP2 = 'Elefant';
-        valueSloganP2 = 'Gross eifern';
-        $selectP2.value = 'Gross eifern'
-        alert('Du hast das gleiche Tier ausgewählt wie der/die andere Spieler:in. Bitte wähle ein anderes Tier aus');        
-    } else { //wenn nicht, geschieht nichts, Tier kann gewählt werden
-
-    }
-
-    valueSloganP2 = document.getElementById("ddselectP2").value; //value des Dropdown definieren (value='xxx')
-    txtvalueP2.innerHTML = valueSloganP2; //Text des Dropdown definieren
-    document.getElementById("cardImgP2").src="img/icon/"+cardTextP2+".svg"; //icon wechseln nach gewähltem Tier
-    // END PLAYER 2
-}
-
-// END CHANGE AVATAR
 
 //START Zeitanzeige
 const anzeige = document.getElementById("zeitanzeige");
