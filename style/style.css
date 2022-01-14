@@ -57,8 +57,17 @@ body {
     
 }
 
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: white;
+  text-align: center;
+}
 
-/* Bootstrap */
+
+/* Bootstrap ergänzungen*/
 body { 
   background-image: url('img/background.svg');
   background-repeat: no-repeat;
@@ -99,10 +108,6 @@ width: 50px;
 border: 2px solid #000;
 }
 
-/*.row-table {
-  width: 80%;
-}*/
-/*ToDo: Hover effekt */
 .btn-primary,  .btn-primary:active, .btn-primary:visited {
 background-color: #BA671C !important;
 border-color: #BA671C !important;
@@ -133,6 +138,13 @@ border-color: #BA671C !important;
   background-color: #8BAB2333 !important;
 }
 
+.bg-green {
+  background-color: #8BAB23;
+}
+
+.h-100px {
+  height: 100px;
+}
 
 
 .ddl-none { /*drop down list entfernt den style, fügt den Pfeil hinzu*/
@@ -156,3 +168,50 @@ border-color: #BA671C !important;
   width: 60px;
   margin: 0 15px;
 }*/
+
+
+/* Confetti*/
+
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    width: 450px;
+    height: 300px;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.1),
+    0 0 0 1000px rgba(255,255,255,0.95) ;
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    padding: 40px;
+    visibility: hidden;
+}
+.popup.active {
+    visibility: visible;
+}
+.close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 10px 20px;
+    background: #f00;
+    color: #fff;
+    cursor: pointer;
+
+}
+
+#my-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 100000;
+    visibility: hidden;
+    pointer-events: none;
+}
+#my-canvas.active {
+    visibility: visible; 
+}

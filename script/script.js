@@ -7,6 +7,7 @@ var tableCell = document.getElementsByTagName('td');
 var tableSlot = document.querySelectorAll('.slot');
 const playerTurn = document.querySelector('.player-turn');
 const resetBtn = document.querySelector('.reset');
+let confe = document.querySelector('#my-canvas'); // Confetti
 // ***Kommentar noch einsetzen***** 
 for(let i=0; i < tableCell.length; i++){
     tableCell[i].addEventListener('click', (e) => {
@@ -42,10 +43,18 @@ Array.prototype.forEach.call(tableCell, (cell) =>{
 
 })
 
+
+// start confetti plugin
+    var confettiSettings = { target: 'my-canvas' };
+    var confetti = new ConfettiGenerator(confettiSettings);
+    confetti.render();
+// end confetti
+
 //eigentliches Spiel, so dass die Farben der einzelnen Slots durch das klicken geändert wird
 function changeColor(e){
     let column = e.target.cellIndex; //Immer wenn man auf eine Zelle klickt, setzt es den Index
     let row = [];
+
 
     for (let i = 5; i>-1; i--){ //man startet bei 5 damit die unterste Reihe zuerst geprüft wird, danach geht es nach "oben"
         if (tableRow[i].children[column].style.backgroundColor =='white'){ //überprüft ob die Hintergrundfarbe weiss ist oder die gleiche wie die eines Spielers
@@ -55,9 +64,12 @@ function changeColor(e){
             if(currentPlayer === 1) {
                 row[0].style.backgroundColor = player1Color; //wenn es Spieler:in 1 ist wird der erste Index des Array in die Spielerfarbe gewechselt und danach zu Spieler 2 gewechslet
                 if (horizontalCheck()|| verticalCheck()|| diagonalCheckUp()||diagonalCheckDown()){ //wenn einer der Checks (horizontal or vertical or diagonal) erfüllt ist und true zurück kommt wird winner ausgegeben 
+                    
                     playerTurn.textContent=`${player1} hat gewonnen!`;
+                    confe.classList.add('active'); //einfügen Confetti-Look
                     //playerTurn.style.color=player1Color; // die Farbe von Spieler 1 wird übernommen, da gewonnen
                     return(alert(`${player1} hat gewonnen!!`));
+
                 }else if(drawCheck()){ //wenn kein Feld mehr weiss ist, aber weder horizontal, vertical oder diagonal Checks true ist muss es ein Unentschieden sein. Ausgabe dass es Unentschieden ist
                     playerTurn.textContent ='Es endet unentschieden!';
                     return alert('Unentschieden');
@@ -71,6 +83,7 @@ function changeColor(e){
                 row[0].style.backgroundColor =player2Color;
                 if (horizontalCheck()|| verticalCheck()|| diagonalCheckUp()||diagonalCheckDown()){ //wenn einer der Checks true wird winner ausgegeben (horizontal or vertical or diagonal)
                     playerTurn.textContent=`${player2} hat gewonnen!`;
+                    confe.classList.add('active'); //einfügen Confetti-Look
                     //playerTurn.style.color=player2Color;
                     return(alert(`${player2} hat gewonnen!!`));
                 }else if(drawCheck()){
@@ -169,6 +182,7 @@ resetBtn.addEventListener('click', () => {
         slot.style.backgroundColor = 'white';
     });
     playerTurn.style.Color='black';
+    confe.classList.remove('active'); // Reset Confetti-Look
     return(currentPlayer ===1 ? playerTurn.textContent = `${player1}s Zug!`: playerTurn.textContent = `${player2}s Zug!`); // Beginn wieder von vorne
 })
 
@@ -272,3 +286,6 @@ function aktualisiereAnzeige(){
     anzeige.innerHTML = stunden + ":" + minuten + ":" + sekunden + "." + millisekunden;
 }
 aktualisiereZeit(); 
+
+
+
