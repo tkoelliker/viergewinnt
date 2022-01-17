@@ -66,7 +66,7 @@ var tableSlot = document.querySelectorAll('.slot');
 const playerTurn = document.querySelector('.player-turn');
 const resetBtn = document.querySelector('.reset');
 let confe = document.querySelector('#my-canvas'); // Confetti
-// ***Kommentar noch einsetzen***** 
+
 for(let i=0; i < tableCell.length; i++){
     tableCell[i].addEventListener('click', (e) => {
         console.log(`${e.target.parentElement.rowIndex},${e.target.cellIndex}`)
